@@ -15,3 +15,11 @@ class ParseHistoryForecastXML:
                 self.xml_files.append(xml_file)
             else:
                 continue
+        self.parse_xml_files()
+
+    def parse_xml_files(self):
+        for xml_file in self.xml_files:
+            tree = ET.parse('{}\\{}'.format(self.xml_dir, xml_file))
+            root = tree.getroot()
+            for child in root.findall(".//G_CONSIDERED_DATE"):
+                print(child.find("CHAR_CONSIDERED_DATE").text)
