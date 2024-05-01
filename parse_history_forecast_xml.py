@@ -4,4 +4,14 @@ import os
 
 class ParseHistoryForecastXML:
     def __init__(self, xml_dir):
+        self.ext = '.xml'
         self.xml_dir = xml_dir
+        self.xml_files = []
+
+    def get_xml_files(self):
+        for xml_file in os.listdir(self.xml_dir):
+            if xml_file.lower().endswith(self.ext):
+                print(xml_file)
+                self.xml_files.append(xml_file)
+            else:
+                continue
